@@ -16,8 +16,9 @@ function createBanana() {
   return `
   <div class="banana">
     <h3>This is a Banana</h3>
+    <p>&#127820;</p>
     <p>This is a random banana number: ${randomNum()}</p>
-    <button class="delete-btn" onclick="deleteHandler(this)">delete</button>
+    <button class="delete-btn" onclick="deleteHandler(this)">Eat</button>
   </div>
   `;
 }
