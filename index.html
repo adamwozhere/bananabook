@@ -10,6 +10,16 @@
       body {
         font-family: sans-serif;
       }
+      .container {
+        max-width: 420px;
+        margin-inline: auto;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        margin-bottom: 2rem;
+        border: 2px solid red;
+      }
       .banana {
         background-color: lightgoldenrodyellow;
         border: 1px solid black;
@@ -19,8 +29,11 @@
     </style>
   </head>
   <body>
-    <h1>BANANA BUTTON FOR KIA</h1>
-    <div id="form"></div>
-    <button id="banana-btn">Give banana</button>
+    <div class="container">
+      <h1>BANANA BUTTON FOR KIA</h1>
+      <img src="pg-monkey.jpg" alt="" />
+      <div id="form"></div>
+      <button id="banana-btn">Give banana</button>
+    </div>
   </body>
 </html>
