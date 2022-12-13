@@ -13,11 +13,13 @@ function deleteHandler(banana) {
 
 // make a new banana
 function createBanana() {
+  const uid = _UID();
   return `
-  <div class="banana">
+  <div class="banana" id="banana-${uid}">
     <h3>This is a Banana</h3>
     <p>&#127820;</p>
     <p>This is a random banana number: ${randomNum()}</p>
+    <p>UID: ${uid}</p>
     <button class="delete-btn" onclick="deleteHandler(this)">Eat</button>
   </div>
   `;
@@ -27,3 +29,21 @@ function createBanana() {
 function randomNum() {
   return Math.floor(Math.random() * 100);
 }
+
+// IIFE makes unique ID value
+const _UID = (() => {
+  let id = 0;
+  return () => id++;
+})();
+
+/**
+ * 
+ * functionally equivalent to:
+ * 
+  const _UID = (function () {
+    let id = 0;
+    return function() {
+      return id++;
+    }
+  })();
+*/
