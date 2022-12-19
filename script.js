@@ -6,17 +6,20 @@ const teaBtn = document.getElementById('tea-btn');
 // add a new bannana handler
 bananaBtn.addEventListener('click', () => {
   form.insertAdjacentHTML('beforeend', createBanana());
+  updateIndexes();
 });
 
 // add a new bannana handler
 teaBtn.addEventListener('click', () => {
   form.insertAdjacentHTML('beforeend', createTea());
+  updateIndexes();
 });
 
 // handler takes in the delete button element as a parameter (passed in as 'this')
 // selects the closest selector and removes it, this could be a data attribute (put in [square brackets] or .class or #id etc.)
 function deleteHandler(element) {
   element.closest('[data-item]').remove();
+  updateIndexes();
 }
 
 // cup of tea and bana both have 'data-item' attribute, which means they can be deleted
@@ -24,7 +27,7 @@ function deleteHandler(element) {
 function createBanana() {
   const uid = _UID();
   return `
-  <div class="banana" id="banana-${uid}" data-item>
+  <div class="banana" id="banana-${uid}" data-item data-index>
     <h3>This is a Banana</h3>
     <p>&#127820;</p>
     <p>This is a random banana number: ${randomNum()}</p>
@@ -38,7 +41,7 @@ function createBanana() {
 function createTea() {
   const uid = _UID();
   return `
-  <div class="tea" id="tea-${uid}" data-item>
+  <div class="tea" id="tea-${uid}" data-item data-index>
     <h3>This is a cup of tea</h3>
     <p>&#9749;</p>
     <p>This is a random cup of tea number: ${randomNum()}</p>
@@ -58,6 +61,14 @@ const _UID = (() => {
   let id = 0;
   return () => id++;
 })();
+
+function updateIndexes() {
+  const items = form.querySelectorAll('[data-item]');
+  Array.from(items).map((item, index) => {
+    console.log('item', item, index);
+    item.setAttribute('data-index', index);
+  });
+}
 
 /**
  * 
